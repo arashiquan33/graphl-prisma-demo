@@ -1,0 +1,23 @@
+{
+  "name": "graphql-prisma-demo",
+  "version": "1.0.0",
+  "description": "graphql-prisma-demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arashiquan33/graphl-prisma-demo.git"
+  },
+  "keywords": [
+    "prisma",
+    "graphq;"
+  ],
+  "author": "quantianchao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arashiquan33/graphl-prisma-demo/issues"
+  },
+  "homepage": "https://github.com/arashiquan33/graphl-prisma-demo#readme"
+}
