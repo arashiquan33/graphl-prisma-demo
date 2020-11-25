@@ -5,7 +5,7 @@ var {graphqlHTTP} = require('express-graphql');
 var { graphql, buildSchema ,GraphQLScalarType } = require('graphql');
 
 //实例化一个Date类型的标量,实现序列号和反序列化函数
-new GraphQLScalarType({
+var aa=new GraphQLScalarType({
     name:'Date',
     description:'定义日期类型标量',
     parseValue(value){
@@ -15,6 +15,7 @@ new GraphQLScalarType({
         return value.getTime()
     },
 })
+
 
 var schema = buildSchema(`
         # 用户
@@ -136,17 +137,17 @@ var app = express();
 //  app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
 
 //express提供了graphqlHTTP middleaware
-// const loggMiddleware = (req, res, next) => {
-//     console.log('ip:', req.ip);
-//     next();
-// }
-// app.use(loggMiddleware);
-// app.use('/graphql', graphqlHTTP({
-//   schema: schema,
-//   rootValue: resolver,
-//   graphiql: true
-// }));
-// app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
+const loggMiddleware = (req, res, next) => {
+    console.log(`[${new Date().toISOString()}] : ${req.url} : ${req.ip}`);
+    next();
+}
+app.use(loggMiddleware);
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: resolver,
+  graphiql: true
+}));
+app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
 
 //1.CURL命令发送POST,参数采用grapqhl查询语法
 //curl -X POST -H "Content-Type:application/json" -d '{"query":"{getUsers{\n id\n  name\n sex\n}}"}' http://localhost:4000/graphql 
