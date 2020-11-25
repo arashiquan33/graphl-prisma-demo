@@ -116,7 +116,7 @@ var usersData=[{
 
 var app = express();
 
-//定义endpoint，接收客户端发送的body体，通过graphql方法查询数据返回
+//定义资源路径，接收客户端发送的body体，通过graphql方法查询数据返回
 // app.use('/graphql',function(req,res){
 //     let postBody=''
 //     req.on('data',function(chunk){
